@@ -12,13 +12,20 @@ class User < ActiveRecord::Base
          :rememberable, :confirmable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :location, :education, :institution, :link, :lat_long
-
+  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+    :name, :location, :education, :institution, :link, :lat_long, :credits
+  
   validates :name, :education, :location, presence: true
   
+  # specs authored
+  has_many :authored_specs, :class_name => "Specialty", :foreign_key => :author_id    
+
+  # specialties
+  has_many :spec_joins, :class_name => "SpecJoin", :foreign_key => :user_id
+  has_many :specialties, :through => :spec_joins
+  
   # converts location (zip, city/state, address) to [latitude, longitude]
-  def lat_lng(location)
+  def get_lat_lng(location)
     url = Addressable::URI.new(
       :scheme => "https",
       :host => "maps.googleapis.com",
@@ -32,7 +39,7 @@ class User < ActiveRecord::Base
   end
   
   # calculates distance (in miles) between two lat/longs using Haversine formula
-  # or just use geocoder gem
+  # or just use geocoder gem??
   def distance(lat_long1, lat_long2)
     
   end
