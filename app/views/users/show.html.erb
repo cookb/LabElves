@@ -1,0 +1,19 @@
+<h1>Hello, <%= @user.name %>!</h1>
+<h3>Profile information</h3>
+<ul>
+	<li>User ID: <%= @user.id %></li><br>
+	<li>Full Name: <%= @user.name %></li><br>
+	<li>Email Address: <%= @user.email %></li><br>
+	<li>Location: <%= @user.location %></li><br>
+	
+	<% unless @user.link.empty? %>
+	<li><%= link_to "Link to CV/Resume", @user.link %></li><br>
+	<% end %>
+	
+	<% unless @user.institution.empty? %>
+	<li>Institution/Company: <%= @user.institution %></li><br>
+	<% end %>
+	
+	<li>Highest Degree Achieved: <%= @user.education %></li>				
+</ul>
+<%= button_to "Edit Profile", edit_user_registration_url, :method => :get %>

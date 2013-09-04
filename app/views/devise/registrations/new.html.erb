@@ -1,0 +1,68 @@
+<h1>Greetings, future LabElf!</h1>
+<h2>Sign up</h2>
+
+<form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post">
+	<%= devise_error_messages! %>
+  
+	<div style="margin:0;padding:0;display:inline">
+		<input type="hidden" name="utf8" value="✓">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+	</div>
+
+  <div><label for="user_email">Email</label><br>
+  <input type="email" autofocus="autofocus" id="user_email" name="user[email]" size="30" value=""></div>
+
+  <div><label for="user_password">Password</label><br>
+  <input type="password" id="user_password" name="user[password]" size="30"></div>
+
+  <div><label for="user_password_confirmation">Password confirmation</label><br>
+  <input type="password" id="user_password_confirmation" name="user[password_confirmation]" size="30"></div>
+
+	<div><label for="user_name">Full Name</label><br>
+	<input type="text" id="user_name" size="30" name="user[name]"></div>
+
+	<div><label for="user_location">Location</label><br>
+	<input type="text" id="user_location" size="30" name="user[location]"></div>				
+				
+	<div><label for="user_institution">Institution/Company (optional)</label><br>
+	<input type="text" id="user_institution" size="30" name="user[institution]"></div>
+
+	<div><label for="user_link">Link to CV/Resume (optional)</label><br>
+	<input type="text" id="user_link" size="30" name="user[link]"></div>
+
+	<div><label for="user_education">Highest Degree Achieved</label><br>
+	<select id="user_education" name="user[education]">
+		<option></option>
+		<option value="High School">High School</option>
+		<option value="Associates">Associates</option>
+		<option value="Bachelors">Bachelors</option>
+		<option value="Masters">Masters</option>
+		<option value="Doctorate">Doctorate</option>		
+	</select></div>
+
+	<br>
+	<p>** LabElves needs to confirm your email address. Please follow instructions in your confirmation email to activate your account! **</p>
+  <div><input type="submit" name="commit" value="Submit / Send confirmation email"></div>
+</form>
+
+<br>
+<%= render "devise/shared/links" %>
+
+
+<!-- ORIGINAL DEVISE PAGE (GRABBED HTML INSTEAD) 
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %> -->
