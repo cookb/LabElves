@@ -1,4 +1,4 @@
-<h1>Edit User Profile</h1>
+<h1 style="color:green">Edit User Profile</h1>
 
 <form accept-charset="UTF-8" action="/users" class="edit_user" id="edit_user" method="post">
 	<%= devise_error_messages! %>
@@ -21,7 +21,7 @@
 	<input type="text" id="user_name" name="user[name]" size="30" 
 				 value="<%= resource.name %>"></div>
 
-	<div><label for="user_location">Location</label><br>
+	<div><label for="user_location">Location (zipcode, city/state, or full address)</label><br>
 	<input type="text" id="user_location" name="user[location]" size="30" 
 				 value="<%= resource.location %>"></div>
 
@@ -57,7 +57,7 @@
   <div><label for="user_current_password">Current password</label> <i>(we need your current password to confirm your changes)</i><br>
   <input type="password" id="user_current_password" name="user[current_password]" size="30"></div>
 
-  <div><input type="submit" name="commit" value="Update"></div>
+  <div><input type="submit" name="commit" value="Update Profile"></div>
 </form>
 
 <h3>Delete your LabElves account</h3>

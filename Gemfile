@@ -13,6 +13,10 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
 
+# FOR GOOGLE GEOCODING API
+gem 'rest-client'
+gem 'addressable'
+
 group :development do 
   gem 'better_errors'
   gem 'binding_of_caller'

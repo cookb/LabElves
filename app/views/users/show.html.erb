@@ -1,10 +1,12 @@
-<h1>Hello, <%= @user.name %>!</h1>
+<h1 style="color:green">Hello, <%= @user.name %></h1>
+<h3 style="color:red">Please be sure to keep your location updated!</h3>
 <h3>Profile information</h3>
 <ul>
 	<li>User ID: <%= @user.id %></li><br>
 	<li>Full Name: <%= @user.name %></li><br>
 	<li>Email Address: <%= @user.email %></li><br>
 	<li>Location: <%= @user.location %></li><br>
+	<li>Lat/Long: <%= "(#{@user.lat_long[0]}, #{@user.lat_long[1]})" %></li><br>
 	
 	<% unless @user.link.empty? %>
 	<li><%= link_to "Link to CV/Resume", @user.link %></li><br>
