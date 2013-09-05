@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904204632) do
+ActiveRecord::Schema.define(:version => 20130905181508) do
+
+  create_table "bids", :force => true do |t|
+    t.integer  "task_id",     :null => false
+    t.integer  "elf_id",      :null => false
+    t.integer  "credits_bid", :null => false
+    t.datetime "time_bid",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "bids", ["elf_id"], :name => "index_volunteers_on_elf_id"
+  add_index "bids", ["task_id"], :name => "index_volunteers_on_task_id"
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "task_id",    :null => false
+    t.string   "title"
+    t.text     "comments"
+    t.boolean  "endorse"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["task_id"], :name => "index_reviews_on_task_id"
 
   create_table "spec_joins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -34,6 +57,32 @@ ActiveRecord::Schema.define(:version => 20130904204632) do
 
   add_index "specialties", ["name"], :name => "index_specialties_on_name", :unique => true
   add_index "specialties", ["parent_id"], :name => "index_specialties_on_parent_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "status",     :null => false
+    t.integer  "user_id",    :null => false
+    t.integer  "elf_id"
+    t.integer  "spec_id",    :null => false
+    t.string   "subject",    :null => false
+    t.text     "body",       :null => false
+    t.integer  "duration",   :null => false
+    t.string   "location",   :null => false
+    t.string   "lat_long"
+    t.integer  "credits",    :null => false
+    t.datetime "time_start", :null => false
+    t.datetime "time_end",   :null => false
+    t.datetime "time_final"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tasks", ["elf_id"], :name => "index_tasks_on_elf_id"
+  add_index "tasks", ["lat_long"], :name => "index_tasks_on_lat_long"
+  add_index "tasks", ["spec_id"], :name => "index_tasks_on_spec_id"
+  add_index "tasks", ["time_end"], :name => "index_tasks_on_time_end"
+  add_index "tasks", ["time_final"], :name => "index_tasks_on_time_final"
+  add_index "tasks", ["time_start"], :name => "index_tasks_on_time_start"
+  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

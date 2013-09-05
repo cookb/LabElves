@@ -24,6 +24,13 @@ class User < ActiveRecord::Base
   has_many :spec_joins, :class_name => "SpecJoin", :foreign_key => :user_id
   has_many :specialties, :through => :spec_joins
   
+  # bids
+  has_many :bids, :class_name => "Bid", :foreign_key => :elf_id
+  
+  # tasks
+  has_many :user_tasks, :class_name => "Task", :foreign_key => :user_id
+  has_many :elf_tasks, :class_name => "Task", :foreign_key => :elf_id    
+  
   # converts location (zip, city/state, address) to [latitude, longitude]
   def get_lat_lng(location)
     url = Addressable::URI.new(

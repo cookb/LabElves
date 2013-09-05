@@ -14,4 +14,7 @@ class Specialty < ActiveRecord::Base
   # join to users
   has_many :spec_joins, :class_name => "SpecJoin", :foreign_key => :spec_id
   has_many :users, :through => :spec_joins
+  
+  # tasks
+  has_many :tasks, :class_name => "Task", :foreign_key => :spec_id  
 end

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status: MyString
+  user_id: 1
+  elf_id: 1
+  spec_id: 1
+  subject: MyString
+  body: MyText
+  duration: 1
+  location: MyString
+  lat_long: MyString
+  credits: 1
+  time_start: 2013-09-05 10:39:25
+  time_end: 2013-09-05 10:39:25
+  time_final: 2013-09-05 10:39:25
+
+two:
+  status: MyString
+  user_id: 1
+  elf_id: 1
+  spec_id: 1
+  subject: MyString
+  body: MyText
+  duration: 1
+  location: MyString
+  lat_long: MyString
+  credits: 1
+  time_start: 2013-09-05 10:39:25
+  time_end: 2013-09-05 10:39:25
+  time_final: 2013-09-05 10:39:25

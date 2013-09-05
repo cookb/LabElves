@@ -9,24 +9,25 @@ class SpecialtiesController < ApplicationController
     
   end
   
+  def edit
+    # only for author!
+  end
+  
+  def update
+    # only for author!    
+  end
+  
   def index
+    # index of a user's specialties? or all specialties?
     @user = current_user
     render :index
   end
   
   def show
-    
-  end
-  
-  def edit
-    
-  end
-  
-  def update
-    
+    # detail view of one specialty
   end
   
   def destroy
-    
+    # no destroy allowed?
   end
 end

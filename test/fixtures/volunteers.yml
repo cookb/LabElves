@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  task_id: 1
+  elf_id: 1
+  credits_bid: 1
+  time_bid: 2013-09-05 10:21:50
+
+two:
+  task_id: 1
+  elf_id: 1
+  credits_bid: 1
+  time_bid: 2013-09-05 10:21:50
