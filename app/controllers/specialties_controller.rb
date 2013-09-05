@@ -10,7 +10,8 @@ class SpecialtiesController < ApplicationController
   end
   
   def index
-    
+    @user = current_user
+    render :index
   end
   
   def show

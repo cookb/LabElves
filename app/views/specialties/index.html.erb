@@ -1,0 +1,15 @@
+<h2 style="color:green">Specialties for <%= @user.name %></h2>
+
+<ul>
+	<% @user.specialties.each do |specialty| %>
+		<li><%= specialty.name %></li>
+		<% id = SpecJoin.find_by_user_id_and_spec_id(@user.id, specialty.id).id %>
+		<%= button_to "Delete Specialty", spec_join_url(id), :method => :delete %>
+		<br>
+	<% end %>
+</ul>
+
+<h3 style="color:red">Add another specialty</h3>
+<%= button_to "Add Specialty", spec_joins_url, :method => :create %>
+
+	

@@ -1,0 +1,2 @@
+module SpecJoinsHelper
+end

@@ -3,4 +3,5 @@ LabElves::Application.routes.draw do
 
   devise_for :users
   resources :specialties
+  resources :spec_joins, :only => [:create, :destroy]
 end
