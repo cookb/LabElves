@@ -28,8 +28,13 @@ class User < ActiveRecord::Base
   has_many :bids, :class_name => "Bid", :foreign_key => :elf_id
   
   # tasks
-  has_many :user_tasks, :class_name => "Task", :foreign_key => :user_id
+  has_many :santa_tasks, :class_name => "Task", :foreign_key => :user_id
   has_many :elf_tasks, :class_name => "Task", :foreign_key => :elf_id    
+  
+  # reviews
+  has_many :reviews_received, :through => :elf_tasks, :source => :review
+  has_many :reviews_authored, :through => :santa_tasks, :source => :review
+  
   
   # converts location (zip, city/state, address) to [latitude, longitude]
   def get_lat_lng(location)

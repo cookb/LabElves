@@ -14,8 +14,8 @@ class Task < ActiveRecord::Base
   # specialty
   belongs_to :specialty, :class_name => "Specialty", :foreign_key => :spec_id
   
-  # owner
-  belongs_to :user, :class_name => "User", :foreign_key => :user_id
+  # santa
+  belongs_to :santa, :class_name => "User", :foreign_key => :user_id
   
   # elf
   belongs_to :elf, :class_name => "User", :foreign_key => :elf_id
