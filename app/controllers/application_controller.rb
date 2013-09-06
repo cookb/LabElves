@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   # current_user
   # user_session  (accesses the session for this scope)
   # before_filter :authenticate_user!   (use before any authorized action)
+  
+  # converts location (zip, city/state, address) to [latitude, longitude]
+  
+  include ApplicationHelper
 end

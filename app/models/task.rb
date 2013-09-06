@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
-  attr_accessible :status, :user_id, :elf_id, :spec_id, :subject, :body, 
-  :duration, :location, :lat_long, :credits, :time_start, :time_end, :time_final
+  attr_accessible :status, :user_id, :elf_id, :spec_id, :subject, :body, :duration, 
+    :location, :latitude, :longitude, :credits, :time_start, :time_end, :time_final
   
   validates :status, :user_id, :spec_id, :subject, :body, :duration, :location, 
     :credits, :time_start, :time_end, presence: true

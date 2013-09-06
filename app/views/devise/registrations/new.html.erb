@@ -10,34 +10,45 @@
 	</div>
 
   <div><label for="user_email">Email</label><br>
-  <input type="email" autofocus="autofocus" id="user_email" name="user[email]" size="30" value=""></div>
+  <input type="email" autofocus="autofocus" id="user_email" name="user[email]" 
+				 size="40" value="<%= resource.email %>"></div>
 
   <div><label for="user_password">Password</label><br>
-  <input type="password" id="user_password" name="user[password]" size="30"></div>
+  <input type="password" id="user_password" name="user[password]" size="40"></div>
 
   <div><label for="user_password_confirmation">Password confirmation</label><br>
-  <input type="password" id="user_password_confirmation" name="user[password_confirmation]" size="30"></div>
+  <input type="password" id="user_password_confirmation" 
+				 name="user[password_confirmation]" size="40"></div>
 
 	<div><label for="user_name">Full Name</label><br>
-	<input type="text" id="user_name" size="30" name="user[name]"></div>
+	<input type="text" id="user_name" size="40" name="user[name]" 
+				 value="<%= resource.name %>"></div>
 
 	<div><label for="user_location">Location (zipcode, city/state, or full address)</label><br>
-	<input type="text" id="user_location" size="30" name="user[location]"></div>				
+	<input type="text" id="user_location" size="40" name="user[location]" 
+				 value="<%= resource.location %>"></div>				
 				
 	<div><label for="user_institution">Institution/Company (optional)</label><br>
-	<input type="text" id="user_institution" size="30" name="user[institution]"></div>
+	<input type="text" id="user_institution" size="40" name="user[institution]" 
+				 value="<%= resource.institution %>"></div>
 
 	<div><label for="user_link">Link to CV/Resume (optional)</label><br>
-	<input type="text" id="user_link" size="30" name="user[link]"></div>
+	<input type="text" id="user_link" size="40" name="user[link]" 
+				 value="<%= resource.link %>"></div>
 
 	<div><label for="user_education">Highest Degree Achieved</label><br>
 	<select id="user_education" name="user[education]">
 		<option></option>
-		<option value="High School">High School</option>
-		<option value="Associates">Associates</option>
-		<option value="Bachelors">Bachelors</option>
-		<option value="Masters">Masters</option>
-		<option value="Doctorate">Doctorate</option>		
+		<option value="High School" 
+		<%= "selected" if resource.education == "High School" %>>High School</option>
+		<option value="Associates" 
+		<%= "selected" if resource.education == "Associates" %>>Associates</option>
+		<option value="Bachelors" 
+		<%= "selected" if resource.education == "Bachelors" %>>Bachelors</option>
+		<option value="Masters" 
+		<%= "selected" if resource.education == "Masters" %>>Masters</option>
+		<option value="Doctorate" 
+		<%= "selected" if resource.education == "Doctorate" %>>Doctorate</option>
 	</select></div>
 
 	<br>

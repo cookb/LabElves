@@ -11,26 +11,26 @@
   
   <div><label for="user_email">Email</label><br>
   <input type="email" id="user_email" name="user[email]" 
-				 size="30" autofocus="autofocus" value="<%= resource.email %>"></div>
+				 size="40" autofocus="autofocus" value="<%= resource.email %>"></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
 	<div><label for="user_name">Full Name</label><br>
-	<input type="text" id="user_name" name="user[name]" size="30" 
+	<input type="text" id="user_name" name="user[name]" size="40" 
 				 value="<%= resource.name %>"></div>
 
 	<div><label for="user_location">Location (zipcode, city/state, or full address)</label><br>
-	<input type="text" id="user_location" name="user[location]" size="30" 
+	<input type="text" id="user_location" name="user[location]" size="40" 
 				 value="<%= resource.location %>"></div>
 
 	<div><label for="user_institution">Institution/Company (optional)</label><br>
-	<input type="text" id="user_institution" name="user[institution]" size="30" 
+	<input type="text" id="user_institution" name="user[institution]" size="40" 
 				 value="<%= resource.institution %>"></div>
 				
 	<div><label for="user_link">Link to CV/Resume (optional)</label><br>
-	<input type="text" id="user_link" name="user[link]" size="30" 
+	<input type="text" id="user_link" name="user[link]" size="40" 
 				 value="<%= resource.link %>"></div>				
 	
 	<div><label for="user_education">Highest Degree Achieved</label><br>
@@ -49,13 +49,13 @@
 	</select></div>
 
   <div><label for="user_password">Password</label> <i>(leave blank if you don't want to change it)</i><br>
-  <input type="password" autocomplete="off" id="user_password" name="user[password]" size="30"></div>
+  <input type="password" autocomplete="off" id="user_password" name="user[password]" size="40"></div>
 
   <div><label for="user_password_confirmation">Password confirmation</label><br>
-  <input type="password" id="user_password_confirmation" name="user[password_confirmation]" size="30"></div>
+  <input type="password" id="user_password_confirmation" name="user[password_confirmation]" size="40"></div>
 
   <div><label for="user_current_password">Current password</label> <i>(we need your current password to confirm your changes)</i><br>
-  <input type="password" id="user_current_password" name="user[current_password]" size="30"></div>
+  <input type="password" id="user_current_password" name="user[current_password]" size="40"></div>
 
   <div><input type="submit" name="commit" value="Update Profile"></div>
 </form>

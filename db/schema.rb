@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905181508) do
+ActiveRecord::Schema.define(:version => 20130905233714) do
 
   create_table "bids", :force => true do |t|
     t.integer  "task_id",     :null => false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130905181508) do
     t.datetime "time_bid",    :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "comments"
   end
 
   add_index "bids", ["elf_id"], :name => "index_volunteers_on_elf_id"
@@ -67,17 +68,17 @@ ActiveRecord::Schema.define(:version => 20130905181508) do
     t.text     "body",       :null => false
     t.integer  "duration",   :null => false
     t.string   "location",   :null => false
-    t.string   "lat_long"
     t.integer  "credits",    :null => false
     t.datetime "time_start", :null => false
     t.datetime "time_end",   :null => false
     t.datetime "time_final"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "tasks", ["elf_id"], :name => "index_tasks_on_elf_id"
-  add_index "tasks", ["lat_long"], :name => "index_tasks_on_lat_long"
   add_index "tasks", ["spec_id"], :name => "index_tasks_on_spec_id"
   add_index "tasks", ["time_end"], :name => "index_tasks_on_time_end"
   add_index "tasks", ["time_final"], :name => "index_tasks_on_time_final"
@@ -102,8 +103,9 @@ ActiveRecord::Schema.define(:version => 20130905181508) do
     t.string   "authentication_token"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "lat_long"
     t.integer  "credits",                :default => 0
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

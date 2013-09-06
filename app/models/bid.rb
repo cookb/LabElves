@@ -1,5 +1,5 @@
 class Bid < ActiveRecord::Base
-  attr_accessible :credits_bid, :elf_id, :task_id, :time_bid
+  attr_accessible :credits_bid, :elf_id, :task_id, :time_bid, :comments
   
   validates :credits_bid, :elf_id, :task_id, :time_bid, presence: true
   validates_uniqueness_of :elf_id, :scope => :task_id

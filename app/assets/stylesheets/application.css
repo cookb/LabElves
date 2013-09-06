@@ -12,14 +12,24 @@
  *= require_tree .
  */
 
-/*body {
-  background-image: url("/assets/WillFerrellElf.jpg");
+body {
+	font-family: helvetica, arial;
 }
-*/
+
+head {
+	font-family: helvetica, arial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: corbel, arial;
+}
+
 img {
-	opacity: 0.8;
+	opacity: 0.9;
 	position: absolute;
 	left: 400px;
 	top: 50px;
 	z-index: -1;
 }
+
+/*  background-image: url("/assets/WillFerrellElf.jpg");*/
