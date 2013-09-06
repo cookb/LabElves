@@ -1,0 +1,19 @@
+<h2 style="color:green">Specialty Details</h2>
+
+<ul>
+	<li>Name: <%= @specialty.name %></li>
+	<% if @specialty.parent %>
+	<li>Parent Specialty: <%= @specialty.parent.name %></li>	
+	<% end %>
+	<li>Description: <%= @specialty.description %></li>
+	<li>Created By: <%= @specialty.author.name %></li>
+	<li>Creation Date: <%= @specialty.created_at.to_date %></li>
+</ul>
+
+<% unless current_user.specialties.include?(@specialty) %>
+	<h3 style="color:red">Add this specialty to your skills!</h3>
+	<%= button_to "Add Specialty", spec_joins_url(@specialty.id), :method => :create %>
+	<br>
+<% end %>
+
+<%= link_to "Back", :back %>

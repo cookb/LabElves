@@ -4,9 +4,16 @@ LabElves::Application.routes.draw do
   # devise_for :users
   devise_for :users, :controllers => {:registrations => "registrations"}
   
-  resources :specialties
+  resources :specialties, :except => :destroy do
+    collection { get 'all' }
+  end
+  
   resources :spec_joins, :only => [:create, :destroy]
-  resources :reviews, :only => [:new, :create, :show, :index]
+  
+  resources :reviews, :only => [:new, :create, :show, :index] do
+    collection { get 'authored' }
+  end
+  
   resources :tasks
   resources :bids
 end

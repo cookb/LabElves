@@ -14,20 +14,26 @@ class SpecialtiesController < ApplicationController
   end
   
   def update
-    # only for author!    
+    # only for author! maybe only edit description?    
   end
   
   def index
-    # index of a user's specialties? or all specialties?
+    # index of a user's specialties
+    # TODO nesting!
     @user = current_user
     render :index
   end
   
-  def show
-    # detail view of one specialty
+  def all
+    # index of all other specialties
+    # TODO nesting!
+    @specialties = Specialty.all.reject {|i| current_user.specialties.include?(i)}
+    render :all
   end
   
-  def destroy
-    # no destroy allowed?
+  def show
+    # detail view of one specialty
+    @specialty = Specialty.find(params[:id])
+    render :show
   end
 end

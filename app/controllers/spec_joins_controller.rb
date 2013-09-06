@@ -2,9 +2,9 @@ class SpecJoinsController < ApplicationController
   before_filter :authenticate_user!
   
   def create
-    spec_join = SpecJoin.new(:user_id => current_user.id, :spec_id => params[:id])
+    spec_join = SpecJoin.new(:user_id => current_user.id, :spec_id => params[:format])
     spec_join.save
-    redirect_to specialties_url
+    redirect_to all_specialties_url
   end
   
   def destroy

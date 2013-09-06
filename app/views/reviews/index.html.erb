@@ -1,0 +1,16 @@
+<h2 style="color:green">Reviews for <%= @user.name %></h2>
+
+<ul>
+	<% stars = 0 %>
+	<% @user.reviews_received.each do |review| %>
+		<li><%= link_to "#{review.task.subject}, #{review.task.time_final.to_date}", review_url(review) %>
+		<% if review.endorse %>
+			&#x2605;
+			<% stars += 1 %>
+		<% end %>
+		</li><br>
+	<% end %>
+</ul>
+
+<% total = @user.reviews_received.length %>
+<h3 style="color:red">Endorsement Percent: <%= stars.to_f / total * 100 %>%</h3>

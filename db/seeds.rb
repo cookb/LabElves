@@ -35,6 +35,11 @@ Task.create(status: "completed", user_id: 1, elf_id: 2, spec_id: 5, subject: "Re
 body: "Pickup and deliver my order from the UCSF stockroom", duration: 15, location: "San Francisco, CA", 
 credits: 10, time_start: "2013-09-01 09:00:00", time_end: "2013-09-01 14:00:00", time_final: "2013-09-01 12:00:00")
 
+Task.create(status: "completed", user_id: 1, elf_id: 2, spec_id: 2, subject: "Run a PCR", 
+body: "Set up and run PCR for 96 samples", duration: 60, location: "San Francisco, CA", 
+credits: 50, time_start: "2013-09-02 09:00:00", time_end: "2013-09-04 14:00:00", time_final: "2013-09-03 12:00:00")
+
 Bid.create(task_id: 1, elf_id: 2, time_bid: "2013-09-10 14:00:00", credits_bid: 50, comments: "Time is flexible. Feel free to suggest other times.")
 
 Review.create(task_id: 3, title: "Great job!", comments: "Buddy was perfect", endorse: 1)
+Review.create(task_id: 4, title: "?", comments: "Buddy ate the samples", endorse: 0)
