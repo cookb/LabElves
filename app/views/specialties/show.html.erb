@@ -2,12 +2,22 @@
 
 <ul>
 	<li>Name: <%= @specialty.name %></li>
-	<% if @specialty.parent %>
-	<li>Parent Specialty: <%= @specialty.parent.name %></li>	
-	<% end %>
 	<li>Description: <%= @specialty.description %></li>
 	<li>Created By: <%= @specialty.author.name %></li>
-	<li>Creation Date: <%= @specialty.created_at.to_date %></li>
+	<li>Creation Date: <%= @specialty.created_at.to_date %></li><br>
+
+	<% if @specialty.parent %>
+		<li>Parent Node:<ul> 
+		<li><%= link_to "#{@specialty.parent.name}", specialty_url(@specialty.parent) %></li></ul><br>	
+	<% end %>
+
+	<% if @specialty.children.length > 0 %>
+		<li>Child Node(s):<ul>
+		<% @specialty.children.each do |child| %>
+			<li><%= link_to "#{child.name}", specialty_url(child) %></li>
+		<% end %>
+		</ul></li>
+	<% end %>		
 </ul>
 
 <% unless current_user.specialties.include?(@specialty) %>
@@ -16,4 +26,9 @@
 	<br>
 <% end %>
 
+<h3 style="color:green">Create a new child node for this specialty!</h3>
+<%= render partial: "new", locals: { parent_id: @specialty.id } %>
+<br>
+
+<%= link_to "Back to your specialties", specialties_url %><br>
 <%= link_to "Back", :back %>

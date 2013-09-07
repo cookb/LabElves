@@ -4,7 +4,7 @@ class SpecJoinsController < ApplicationController
   def create
     spec_join = SpecJoin.new(:user_id => current_user.id, :spec_id => params[:format])
     spec_join.save
-    redirect_to all_specialties_url
+    redirect_to specialties_url
   end
   
   def destroy

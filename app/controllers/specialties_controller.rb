@@ -2,19 +2,22 @@ class SpecialtiesController < ApplicationController
   before_filter :authenticate_user!
   
   def new
-    
+    @specialty = Specialty.new
+    render :new
   end
   
   def create
-    
+    @specialty = Specialty.new(params[:specialty])
+    @specialty.save
+    redirect_to all_specialties_url
   end
   
   def edit
-    # only for author!
+    # only for author! maybe only edit description? LATER
   end
   
   def update
-    # only for author! maybe only edit description?    
+    # only for author! maybe only edit description? LATER    
   end
   
   def index
@@ -25,10 +28,17 @@ class SpecialtiesController < ApplicationController
   end
   
   def all
+    # index of all specialties
+    # TOTO nesting!!!
+    @specialties = Specialty.all
+    render :all
+  end
+  
+  def other
     # index of all other specialties
     # TODO nesting!
     @specialties = Specialty.all.reject {|i| current_user.specialties.include?(i)}
-    render :all
+    render :other
   end
   
   def show

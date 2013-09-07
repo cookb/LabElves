@@ -1,11 +1,11 @@
-<h2 style="color:green">All Specialties</h2>
+<h2 style="color:green">Add Specialties</h2>
 
 <ul>
 	<% @specialties.each do |specialty| %>
 		<li><%= link_to "#{specialty.name}", specialty_url(specialty) %></li>
+		<%= button_to "Add Specialty", spec_joins_url(specialty.id), :method => :create %>
 		<br>
 	<% end %>
 </ul>
 
-<%= link_to "Create a new top-level specialty", new_specialty_url %><br>
 <%= link_to "Back to your specialties", specialties_url %>

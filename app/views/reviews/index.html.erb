@@ -14,3 +14,5 @@
 
 <% total = @user.reviews_received.length %>
 <h3 style="color:red">Endorsement Percent: <%= stars.to_f / total * 100 %>%</h3>
+
+<%= link_to "Reviews Authored", authored_reviews_url %>

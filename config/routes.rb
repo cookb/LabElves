@@ -5,7 +5,7 @@ LabElves::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   
   resources :specialties, :except => :destroy do
-    collection { get 'all' }
+    collection { get 'all'; get 'other' }
   end
   
   resources :spec_joins, :only => [:create, :destroy]

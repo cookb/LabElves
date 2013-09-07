@@ -1,0 +1,17 @@
+<form accept-charset="UTF-8" action="/specialties" class="new_specialty" id="new_specialty" method="post">
+	<div style="margin:0;padding:0;display:inline">
+		<input type="hidden" name="utf8" value="✓">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+	</div>
+	
+	<input type="hidden" name="specialty[parent_id]" value="<%= parent_id %>">
+	<input type="hidden" name="specialty[author_id]" value="<%= current_user.id %>">
+		
+  <div><label for="specialty_name">Name</label><br>
+  <input type="text" autofocus="autofocus" id="specialty_name" name="specialty[name]" size="40"></div>
+
+  <div><label for="specialty_description">Description</label><br>
+  <textarea id="specialty_description" name="specialty[description]" rows="2" cols="29"></textarea></div>
+
+  <div><input type="submit" name="commit" value="Create"></div>
+</form>
