@@ -1,0 +1,28 @@
+<h2 style="color:green">Task Details</h2>
+
+<ul>
+	<li>Status: <%= @task.status %></li>
+	<li>Subject: <%= @task.subject %></li>
+	<li>Description: <%= @task.body %></li>
+	<li>Specialty: <%= @task.specialty.name %></li><br>
+
+	<li>Creator (Santa):<ul> 
+	<li><%= link_to "#{@task.santa.name}", profile_url(@task.santa) %></li></ul><br>
+
+	<% if @task.elf %>
+		<li>Helper (Elf):<ul> 
+		<li><%= link_to "#{@task.elf.name}", profile_url(@task.elf) %></li></ul><br>	
+	<% end %>
+
+	<li>Location: <%= @task.location %></li>
+	<li>Duration: <%= @task.duration %> minutes</li>
+	<li>Credits: $<%= @task.credits %></li><br>
+	<li>Earliest date: <%= @task.time_start.localtime %></li>
+	<li>Latest date: <%= @task.time_end.localtime %></li>
+	<% if @task.time_final %>
+		<% message = (@task.status == "booked" ? "Date booked" : "Date completed") %>
+		<li><%= message %>: <%= @task.time_final.localtime %></li>
+	<% end %>
+</ul>
+
+<%= link_to "Back", :back %>

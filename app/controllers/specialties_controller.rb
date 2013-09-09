@@ -13,10 +13,12 @@ class SpecialtiesController < ApplicationController
   end
   
   def edit
+    # TODO
     # only for author! maybe only edit description? LATER
   end
   
   def update
+    # TODO
     # only for author! maybe only edit description? LATER    
   end
   
@@ -35,7 +37,7 @@ class SpecialtiesController < ApplicationController
   end
   
   def other
-    # index of all other specialties
+    # index of all other specialties (all - index)
     # TODO nesting!
     @specialties = Specialty.all.reject {|i| current_user.specialties.include?(i)}
     render :other

@@ -2,13 +2,15 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!
   
   def new
+    # TODO
     # only for santa!
     @review = Review.new
     render :new
   end
   
   def create
-    # only for santa! (can only be done for completed tasks)
+    # TODO
+    # only for santa! (can only be done when task is completed)
   end
   
   def index

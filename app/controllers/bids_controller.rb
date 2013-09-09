@@ -18,7 +18,7 @@ class BidsController < ApplicationController
   end
   
   def index
-    # index of a elf's bids
+    # index of an elf's CURRENT bids
   end
   
   def show
@@ -27,5 +27,6 @@ class BidsController < ApplicationController
   
   def destroy
     # no destroy allowed? (unless is not accepted yet)?
+    # or destroy all bids once a task is booked?  YEAH!
   end
 end

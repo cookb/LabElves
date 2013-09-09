@@ -2,6 +2,7 @@ require 'rest-client'
 require 'addressable/uri'
 require 'json'
 
+# TODO user figaro for this key
 GOOGLE_API_KEY = "AIzaSyC7fyciy8pqjDPyz0RS2SaZdlyHUY_CgGs"
 
 module ApplicationHelper

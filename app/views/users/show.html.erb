@@ -1,5 +1,6 @@
 <h1 style="color:green">Hello, <%= @user.name %></h1>
 
+<%= link_to "Tasks", tasks_url %>
 <%= link_to "Specialties", specialties_url %>
 <%= link_to "Reviews", reviews_url %>
 
@@ -21,7 +22,10 @@
 	<li>Institution/Company: <%= @user.institution %></li><br>
 	<% end %>
 	
-	<li>Highest Degree Achieved: <%= @user.education %></li>				
+	<li>Highest Degree Achieved: <%= @user.education %></li><br>					
 </ul>
+
+<h3 style="color:green">Current credit balance: $<%= @user.credits %></h3>
+
 <%= button_to "Edit Profile", edit_user_registration_url, :method => :get %>
 <br>
