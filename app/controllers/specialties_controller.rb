@@ -8,8 +8,12 @@ class SpecialtiesController < ApplicationController
   
   def create
     @specialty = Specialty.new(params[:specialty])
-    @specialty.save
-    redirect_to all_specialties_url
+    if @specialty.save
+      redirect_to all_specialties_url
+    else
+      flash.now[:notice] = @specialty.errors.full_messages
+      render :new
+    end
   end
   
   def edit

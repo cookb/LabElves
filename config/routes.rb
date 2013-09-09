@@ -1,6 +1,6 @@
 LabElves::Application.routes.draw do
   root :to => "users#show"
-  get "users/:id" => "users#profile", :as => :profile
+  get "profile/:id" => "users#profile", :as => :profile
 
   devise_for :users, :controllers => {:registrations => "registrations"} 
   

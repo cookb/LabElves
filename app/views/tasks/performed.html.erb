@@ -1,4 +1,4 @@
-<h3 style="color:green">Tasks history: Elf</h3>
+<h3 style="color:green">Elf Tasks History: <%= current_user.name %></h3>
 <%= render partial: "list", locals: { tasks: @tasks } %>
 
-<%= link_to "Back to Santa Task History", tasks_url %>
+<%= button_to "View All Tasks For Hire", available_tasks_url, :method => :get %>

@@ -2,6 +2,11 @@
 	<% @tasks.each do |task| %>
 		<li><%= link_to "#{task.subject}, #{task.created_at.to_date}, 
 			#{task.status}, $#{task.credits}", task_url(task) %></li>
+		<% if task.user_id == current_user.id && task.status == "requested"%>
+			<%= button_to "Edit Task", edit_task_url(task), :method => :get %>
+			<%= button_to "Delete Task", task_url(task), :data => { :confirm => 
+				"Are you sure you want to delete this task?" }, :method => :delete %>
+		<% end %>	
 		<br>
 	<% end %>
 </ul>

@@ -4,7 +4,7 @@
 <form accept-charset="UTF-8" action="/users/sign_in" class="new_user" id="new_user" method="post">
 	<div style="margin:0;padding:0;display:inline">
 		<input type="hidden" name="utf8" value="✓">
-		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	</div>
 	
   <div><label for="user_email">Email</label><br>

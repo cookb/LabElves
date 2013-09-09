@@ -1,0 +1,42 @@
+<% action = (task.persisted? ? task_url(task) : tasks_url) %>
+<% method = (task.persisted? ? "put" : "post") %>
+<% status = (task.persisted? ? task.status : "requested") %>
+<% location = (task.persisted? ? task.location : current_user.location) %>
+<% message = (task.persisted? ? "Update Task" : "Create Task") %>
+
+<form accept-charset="UTF-8" action="<%= action %>" class="new_task" id="new_task" method="post">
+	<div style="margin:0;padding:0;display:inline">
+		<input type="hidden" name="utf8" value="✓">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	</div>
+	
+	<input type="hidden" name="_method" value="<%= method %>">
+	<input type="hidden" name="task[status]" value="<%= status %>">
+	<input type="hidden" name="task[user_id]" value="<%= current_user.id %>">
+			
+  <div><label for="task_subject">Subject</label><br>
+  <input type="text" autofocus="autofocus" id="task_subject" name="task[subject]" value="<%= task.subject %>" size="40"></div>
+
+  <div><label for="task_body">Description</label><br>
+  <textarea id="task_body" name="task[body]" rows="2" cols="29"><%= task.body %></textarea></div>
+
+  <div><label for="task_specialty">Required Specialty ID</label><br>
+	<input type="text" id="task_specialty" name="task[spec_id]" value="<%= task.spec_id %>" size="40"></div>
+
+  <div><label for="task_duration">Duration (in minutes)</label><br>
+  <input type="text" id="task_duration" name="task[duration]" value="<%= task.duration %>" size="40"></div>
+
+  <div><label for="task_credits">Credits</label><br>
+  <input type="text" id="task_credits" name="task[credits]" value="<%= task.credits %>"size="40"></div>
+
+  <div><label for="task_location">Location (zipcode, city/state, or full address)</label><br>
+  <input type="text" id="task_location" name="task[location]" value="<%= location %>" size="40"></div>
+
+  <div><label for="task_time_start">Time Window Start</label><br>
+  <input type="text" id="task_time_start" name="task[time_start]" value="<%= task.time_start %>" size="40"></div>
+	
+  <div><label for="task_time_end">Time Window End</label><br>
+  <input type="text" id="task_time_end" name="task[time_end]" value="<%= task.time_end %>" size="40"></div>
+
+  <div><input type="submit" name="commit" value="<%= message %>"></div>
+</form>
