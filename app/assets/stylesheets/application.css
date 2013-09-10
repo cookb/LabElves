@@ -36,4 +36,16 @@ img {
 	z-index: -1;
 }
 
+.requested a {
+	color: green;
+}
+
+.booked a {
+	color: red;
+}
+
+.completed a {
+	color: black;
+}
+
 /*  background-image: url("/assets/WillFerrellElf.jpg");*/

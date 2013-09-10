@@ -10,4 +10,7 @@ class Bid < ActiveRecord::Base
   # elf
   belongs_to :elf, :class_name => "User", :foreign_key => :elf_id  
   
+  # santa
+  has_one :santa, :through => :task
+  
 end

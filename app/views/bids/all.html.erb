@@ -1,0 +1,9 @@
+<h3 style="color:green">All Current Bids For <%= current_user.name %></h3>
+
+<ul>
+	<% @bids.each do |bid| %>
+		<li><%= link_to "#{bid.elf.name}, #{bid.time_bid.to_date}, 
+			$#{bid.credits_bid}", bid_url(bid) %></li>	
+		<br>
+	<% end %>
+</ul>

@@ -18,12 +18,12 @@ class SpecialtiesController < ApplicationController
   
   def edit
     # TODO
-    # only for author! maybe only edit description? LATER
+    # allow?? only for author! maybe only edit description? LATER
   end
   
   def update
     # TODO
-    # only for author! maybe only edit description? LATER    
+    # allow?? only for author! maybe only edit description? LATER    
   end
   
   def index

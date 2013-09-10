@@ -14,8 +14,12 @@ LabElves::Application.routes.draw do
   
   resources :tasks do
     collection { get 'available'; get 'performed' }
+    resources :bids, :only => [:index, :new, :create]
+  end
+  
+  resources :bids, :only => [:show, :edit, :update, :destroy] do
+    collection { get 'all' }
   end
   
   resources :spec_joins, :only => [:create, :destroy]
-  resources :bids
 end

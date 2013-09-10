@@ -1,0 +1,29 @@
+<% action = (bid.persisted? ? bid_url(bid) : task_bids_url(task)) %>
+<% method = (bid.persisted? ? "put" : "post") %>
+<% credits = (bid.persisted? ? bid.credits_bid : task.credits) %>
+<% message = (bid.persisted? ? "Update bid" : "Create bid") %>
+
+<form accept-charset="UTF-8" action="<%= action %>" class="new_bid" id="new_bid" method="post">
+	<div style="margin:0;padding:0;display:inline">
+		<input type="hidden" name="utf8" value="✓">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	</div>
+	
+	<input type="hidden" name="_method" value="<%= method %>">
+	<input type="hidden" name="bid[elf_id]" value="<%= current_user.id %>">
+	<input type="hidden" name="bid[task_id]" value="<%= task.id %>">
+			
+	<h3>Credits Offered: $<%= task.credits %></h3>
+	<h3>Time Window Start: <%= task.time_start %></h3>
+	<h3>Time Window End: <%= task.time_end %></h3>		
+  <div><label for="bid_credits">Credit Bid</label><br>
+  <input type="text" autofocus="autofocus" id="bid_credits" name="bid[credits_bid]" value="<%= credits %>" size="40"></div>
+
+  <div><label for="bid_time">Proposed Date/Time</label><br>
+  <input type="datetime-local" id="bid_time" name="bid[time_bid]" autocomplete="on" value="<%= bid.time_bid %>" size="40"></div>
+
+  <div><label for="bid_comments">Comments</label><br>
+  <textarea id="bid_comments" name="bid[comments]" rows="2" cols="29"><%= bid.comments %></textarea></div>
+
+  <div><input type="submit" name="commit" value="<%= message %>"></div>
+</form>

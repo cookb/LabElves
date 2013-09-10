@@ -32,15 +32,16 @@ class TasksController < ApplicationController
   def update
     # only for santa! (and owner)
     @task = Task.find(params[:id])
+    old_location = @task.location
     if @task.update_attributes(params[:task])   
       new_location = params[:task][:location]
-      if new_location != @task.location
+      if new_location != old_location
         lat_long = get_lat_lng(new_location)
         @task.latitude = lat_long[0]
         @task.longitude = lat_long[1] 
       end
       @task.save
-      redirect_to tasks_url
+      redirect_to task_url(@task)
     else
       flash.now[:notice] = @task.errors.full_messages
       render :edit

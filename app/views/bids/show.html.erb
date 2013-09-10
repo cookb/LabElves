@@ -1,0 +1,21 @@
+<h2 style="color:green">Bid Details</h2>
+
+<ul>
+	<li>ID: <%= @bid.id %></li>
+	<li>Task Subject: <%= @bid.task.subject %></li>
+	<li>Santa: <%= @bid.santa.name %></li>
+	<li>Elf: <%= @bid.elf.name %></li><br>
+
+	<li>Credit Bid: $<%= @bid.credits_bid %></li>
+	<li>Time Bid: <%= @bid.time_bid %></li><br>
+	<li>Comments: <%= @bid.comments %></li>
+</ul>
+
+<% if @bid.elf_id == current_user.id %>
+	<%= button_to "Edit Bid", edit_bid_url(@bid), :method => :get %>
+	<%= button_to "Delete Bid", bid_url(@bid), :data => { :confirm => 
+		"Are you sure you want to delete this bid?" }, :method => :delete %>
+<% end %>
+<br>
+
+<%= link_to "Back", :back %>
