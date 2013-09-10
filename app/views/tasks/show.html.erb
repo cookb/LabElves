@@ -26,12 +26,12 @@
 </ul>
 
 <% if @task.status == "requested" %>
-	<% if @task.user_id == current_user.id %>
+	<% if @task.santa == current_user %>
 		<%= button_to "View Bids", task_bids_url(@task), :method => :get %>
 		<%= button_to "Edit Task", edit_task_url(@task), :method => :get %>
 		<%= button_to "Delete Task", task_url(@task), :data => { :confirm => 
 			"Are you sure you want to delete this task?" }, :method => :delete %>
-	<% else %>
+	<% elsif !@task.bidders.include?(current_user) %>
 		<%= button_to "Bid on this task!", new_task_bid_url(@task), :method => :get %>
 	<% end %>
 <% end %>

@@ -6,7 +6,15 @@ class BidsController < ApplicationController
     # only for elf! (also can't be the santa)
     @bid = Bid.new
     @task = Task.find(params[:task_id])
-    render :new
+    if @task.santa == current_user
+      flash[:notice] = "You can't place a bid for your own task!"
+      redirect_to task_url(@task)
+    elsif !current_user.specialties.include?(@task.specialty)
+      flash[:notice] = "You don't have the proper specialty to bid on this task!"
+      redirect_to task_url(@task)
+    else
+      render :new
+    end
   end
   
   def create

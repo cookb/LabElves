@@ -12,6 +12,7 @@ gem 'ejs'
 gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
+gem 'figaro'
 
 # FOR GOOGLE GEOCODING API
 gem 'rest-client'

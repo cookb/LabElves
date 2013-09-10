@@ -18,9 +18,8 @@
 	<li>Highest Degree Achieved: <%= @user.education %></li>
 </ul>
 
-<% stars = 0 %>
-<% total = @user.reviews_received.length %>
-<% @user.reviews_received.each { |review| stars += 1 if review.endorse } %>
-<h3 style="color:red">Endorsement Percent: <%= stars.to_f / total * 100 %>%</h3>
+<% if @user.rating %>
+	<h3 style="color:red">Endorsement Percent: <%= @user.rating * 100 %>%</h3>
+<% end %>
 
 <%= link_to "Back", :back %>

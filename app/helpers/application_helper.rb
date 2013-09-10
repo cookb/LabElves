@@ -2,8 +2,8 @@ require 'rest-client'
 require 'addressable/uri'
 require 'json'
 
-# TODO user figaro for this key
-GOOGLE_API_KEY = "AIzaSyC7fyciy8pqjDPyz0RS2SaZdlyHUY_CgGs"
+# figaro for this key (config/application.yml)
+GOOGLE_API_KEY = ENV["GOOGLE_API_KEY"]
 
 module ApplicationHelper
   def get_lat_lng(location)

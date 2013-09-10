@@ -9,7 +9,8 @@ class Task < ActiveRecord::Base
   has_one :review, :class_name => "Review", :foreign_key => :task_id  
   
   # bids
-  has_many :bids, :class_name => "Bid", :foreign_key => :task_id  
+  has_many :bids, :class_name => "Bid", :foreign_key => :task_id
+  has_many :bidders, :through  => :bids, :source => :elf  
   
   # specialty
   belongs_to :specialty, :class_name => "Specialty", :foreign_key => :spec_id
