@@ -2,15 +2,30 @@ class ReviewsController < ApplicationController
   before_filter :authenticate_user!
   
   def new
-    # TODO
     # only for santa!
+    @task = Task.find(params[:task_id])
     @review = Review.new
     render :new
   end
   
   def create
-    # TODO
-    # only for santa! (can only be done when task is completed)
+    # only for santa!
+    # updates elf's star, total and rating attribues
+    @review = Review.new(params[:review])
+    if @review.save
+      elf = @review.elf
+      elf.stars += 1 if @review.endorse
+      elf.total += 1
+      elf.rating = elf.stars.to_f / elf.total
+      elf.save
+      task = @review.task
+      task.status = "completed"
+      task.save
+      redirect_to task_url(@review.task)
+    else
+      flash.now[:notice] = @review.errors.full_messages
+      render :new
+    end
   end
   
   def index

@@ -10,4 +10,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render :profile
   end
+  
+  def reviews
+    @user = User.find(params[:id])
+    render "reviews/index"
+  end
 end

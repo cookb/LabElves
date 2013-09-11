@@ -1,7 +1,10 @@
 <ul>
 	<% @tasks.each do |task| %>
-		<li class="<%= task.status %>"><%= link_to "#{task.subject}, #{task.created_at.to_date}, 
-			#{task.status}, $#{task.credits}", task_url(task) %></li>	
+		<% distance = get_distance(task.latitude, task.longitude, 
+			current_user.latitude, current_user.longitude) %>
+		
+		<li class="<%= task.status %>"><%= link_to "#{task.created_at.to_date}: #{task.subject},  
+			$#{task.credits}, #{distance} mi, #{task.status}", task_url(task) %></li>	
 		<br>
 	<% end %>
 </ul>

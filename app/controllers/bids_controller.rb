@@ -73,4 +73,17 @@ class BidsController < ApplicationController
     @bid.destroy
     redirect_to all_bids_url
   end
+  
+  def book
+    # books elf for task. then deletes all bids for the task
+    @bid = Bid.find(params[:id])
+    @task = @bid.task
+    @task.status = "booked"
+    @task.elf_id = @bid.elf_id
+    @task.credits = @bid.credits_bid
+    @task.time_final = @bid.time_bid
+    @task.save
+    @task.bids.each { |bid| bid.destroy }
+    redirect_to task_url(@task)
+  end
 end

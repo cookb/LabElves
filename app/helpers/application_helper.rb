@@ -20,8 +20,10 @@ module ApplicationHelper
   end
   
   # calculates distance (in miles) between two lat/longs using Haversine formula
-  # or just use geocoder gem??
-  def distance(lat_long1, lat_long2)
-    
+  def get_distance(lat1, long1, lat2, long2)
+    term1 = (Math.sin((lat2 - lat1) * Math::PI / 360 )) ** 2
+    term2 = Math.cos(lat1 * Math::PI / 180) * Math.cos(lat2 * Math::PI / 180)
+    term3 = (Math.sin((long2 - long1) * Math::PI / 360 )) ** 2
+    distance = (2 * 3959 * Math.asin(Math.sqrt(term1 + term2 * term3))).round(1) 
   end
 end

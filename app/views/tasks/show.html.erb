@@ -15,8 +15,11 @@
 	<% end %>
 
 	<li>Location: <%= @task.location %></li>
+	<li>Distance: <%= get_distance(@task.latitude, @task.longitude, 
+		current_user.latitude, current_user.longitude) %> miles</li>
 	<li>Duration: <%= @task.duration %> minutes</li>
 	<li>Credits: $<%= @task.credits %></li><br>
+	
 	<li>Earliest date: <%= @task.time_start.localtime %></li>
 	<li>Latest date: <%= @task.time_end.localtime %></li>
 	<% if @task.time_final %>
@@ -35,5 +38,14 @@
 		<%= button_to "Bid on this task!", new_task_bid_url(@task), :method => :get %>
 	<% end %>
 <% end %>
+
+<% if @task.status == "booked" && @task.santa == current_user %>
+	<%= button_to "Complete Task!", complete_tasks_url(@task), :method => :get %>
+<% end %>
+
+<% if @task.status == "needs_review" && !@task.review %>
+	<%= button_to "Review Elf!", new_task_review_url(@task), :method => :get %>
+<% end %>
+
 <br>
 <%= link_to "Back", :back %>

@@ -79,4 +79,18 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_url
   end
+  
+  def complete
+    # completes task. transfers credits (TODO how to trigger review creation?)
+    @task = Task.find(params[:id])
+    @task.status = "needs_review"
+    santa = @task.santa
+    elf = @task.elf
+    santa.credits -= @task.credits
+    elf.credits += @task.credits
+    @task.save
+    santa.save
+    elf.save
+    redirect_to task_url(@task)
+  end
 end

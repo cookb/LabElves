@@ -48,4 +48,8 @@ img {
 	color: black;
 }
 
+.needs_review a {
+	color: blue;
+}
+
 /*  background-image: url("/assets/WillFerrellElf.jpg");*/

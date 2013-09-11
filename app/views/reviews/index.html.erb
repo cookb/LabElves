@@ -11,7 +11,12 @@
 </ul>
 
 <% if @user.rating %>
-	<h3 style="color:red">Endorsement Percent: <%= @user.rating * 100 %>%</h3>
+	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%</h3>
 <% end %>
 
-<%= link_to "Reviews Authored", authored_reviews_url %>
+<% if @user == current_user %>
+	<%= link_to "Reviews Authored", authored_reviews_url %>
+<% else %>
+	<%= link_to "Back to User Profile", profile_url(@user) %>
+<% end %>
+

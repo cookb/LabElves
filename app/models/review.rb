@@ -6,5 +6,9 @@ class Review < ActiveRecord::Base
   # task
   belongs_to :task, :class_name => "Task", :foreign_key => :task_id
   
-  # users? (elf/santa)... meh only if need the association later
+  # elf
+  has_one :elf, :through => :task
+  
+  # santa
+  has_one :santa, :through => :task
 end
