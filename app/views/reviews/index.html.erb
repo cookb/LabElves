@@ -1,18 +1,18 @@
 <h2 style="color:green">Reviews for <%= @user.name %></h2>
 
+<% if @user.rating %>
+	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%</h3>
+<% end %>
+
 <ul>
-	<% @user.reviews_received.each do |review| %>
-		<li><%= link_to "#{review.task.subject}, #{review.task.time_final.to_date}", review_url(review) %>
+	<% @user.reviews_received.order("created_at DESC").each do |review| %>
+		<li><%= link_to "#{review.created_at.to_date}, #{review.task.subject}" , review_url(review) %>
 		<% if review.endorse %>
 			&#x2605;
 		<% end %>
 		</li><br>
 	<% end %>
 </ul>
-
-<% if @user.rating %>
-	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%</h3>
-<% end %>
 
 <% if @user == current_user %>
 	<%= link_to "Reviews Authored", authored_reviews_url %>

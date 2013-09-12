@@ -40,7 +40,7 @@
 <% end %>
 
 <% if @task.status == "booked" && @task.santa == current_user %>
-	<%= button_to "Complete Task!", complete_tasks_url(@task), :method => :get %>
+	<%= button_to "Task Completed!", complete_tasks_url(@task), :method => :get %>
 <% end %>
 
 <% if @task.status == "needs_review" && !@task.review %>

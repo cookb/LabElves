@@ -28,7 +28,7 @@
 <% end %>
 
 <h3 style="color:green">Create a new child node for this specialty!</h3>
-<%= render partial: "new", locals: { parent_id: @specialty.id } %>
+<%= render partial: "form", locals: { parent_id: @specialty.id } %>
 <br>
 
 <%= link_to "Back to your specialties", specialties_url %><br>

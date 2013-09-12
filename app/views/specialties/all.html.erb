@@ -2,8 +2,20 @@
 
 <ul>
 	<% @specialties.each do |specialty| %>
-		<li><%= link_to "#{specialty.name}", specialty_url(specialty) %></li>
-		<br>
+		<% if specialty.parent == nil %>
+			<li><%= link_to "#{specialty.name}", specialty_url(specialty) %>
+			<ul>
+			<% specialty.children.each do |child| %>
+				<li><%= link_to "#{child.name}", specialty_url(child) %>
+				<ul>
+				<% child.children.each do |grandchild| %>
+					<li><%= link_to "#{grandchild.name}", specialty_url(grandchild) %></li>
+				<% end %>
+				</ul>
+			<% end %>
+			</ul>
+			</li><br>
+		<% end %>	
 	<% end %>
 </ul>
 

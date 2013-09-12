@@ -9,9 +9,8 @@
 <h3 style="color:red">Please be sure to keep your location updated!</h3>
 <h3>Profile information</h3>
 <ul>
-	<li>User ID: <%= @user.id %></li><br>
-	<li>Full Name: <%= @user.name %></li><br>
-	<li>Email Address: <%= @user.email %></li><br>
+	<li>Name: <%= @user.name %></li><br>
+	<li>Email: <%= @user.email %></li><br>
 	<li>Location: <%= @user.location %></li><br>
 	<li>Latitude: <%= @user.latitude %></li><br>
 	<li>Longitude: <%= @user.longitude %></li><br>
@@ -29,5 +28,5 @@
 
 <h3 style="color:green">Elf-Credit balance: $<%= @user.credits %></h3>
 
-<%= button_to "Edit Profile", edit_user_registration_url, :method => :get %>
+<%= button_to "Edit Profile", edit_user_registration_url, :method => :get, :class => "btn btn-large btn-block btn-success" %>
 <br>

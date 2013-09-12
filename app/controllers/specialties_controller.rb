@@ -36,7 +36,7 @@ class SpecialtiesController < ApplicationController
   def all
     # index of all specialties
     # TOTO nesting!!!
-    @specialties = Specialty.all
+    @specialties = Specialty.order("name ASC")
     render :all
   end
   
@@ -49,7 +49,7 @@ class SpecialtiesController < ApplicationController
   
   def show
     # detail view of one specialty
-    @specialty = Specialty.find(params[:id])
+    @specialty = Specialty.includes(:parent, :children).find(params[:id])
     render :show
   end
 end

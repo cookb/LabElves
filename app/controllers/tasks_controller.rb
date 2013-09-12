@@ -50,25 +50,25 @@ class TasksController < ApplicationController
   
   def index
     # index of a user's santa_tasks
-    @tasks = current_user.santa_tasks
+    @tasks = current_user.santa_tasks.order("created_at DESC")
     render :index
   end
   
   def performed 
     # index of a user's elf_tasks
-    @tasks = current_user.elf_tasks
+    @tasks = current_user.elf_tasks.order("created_at DESC")
     render :performed
   end
   
   def available
     # index of all tasks with status "requested"
-    @tasks = Task.all.reject { |i| i.status != "requested" }
+    @tasks = Task.where("status" => "requested").order("created_at DESC")
     render :available
   end
   
   def show
     # detail view of one task
-    @task = Task.find(params[:id])
+    @task = Task.includes(:specialty, :santa, :elf).find(params[:id])
     render :show
   end
   
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
   
   def complete
     # completes task. transfers credits (TODO how to trigger review creation?)
-    @task = Task.find(params[:id])
+    @task = Task.includes(:santa, :elf).find(params[:id])
     @task.status = "needs_review"
     santa = @task.santa
     elf = @task.elf

@@ -2,11 +2,9 @@
 
 <h3>Profile information</h3>
 <ul>
-	<li>User ID: <%= @user.id %></li><br>
-	<li>Full Name: <%= @user.name %></li><br>
-	<li>Email Address: <%= @user.email %></li><br>
-	<li>Location: <%= @user.location %></li><br>
-	<li>Distance: <%= get_distance(@user.latitude, @user.longitude, 
+	<li>Name: <%= @user.name %></li><br>
+	<li>Email: <%= @user.email %></li><br>
+	<li>Distance Away: <%= get_distance(@user.latitude, @user.longitude, 
 		current_user.latitude, current_user.longitude) %> miles</li><br>
 
 	<% unless @user.link.empty? %>
@@ -21,7 +19,7 @@
 </ul>
 
 <% if @user.rating %>
-	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%</h3>
+	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%, <%= @user.total %> Reviews</h3>
 <% end %>
 
 <%= button_to "See Reviews For This Elf", user_reviews_url(@user), :method => :get %><br>

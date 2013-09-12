@@ -1,7 +1,7 @@
 <h2 style="color:green">Specialties for <%= @user.name %></h2>
 
 <ul>
-	<% @user.specialties.each do |specialty| %>
+	<% @user.specialties.order("name ASC").each do |specialty| %>
 		<li><%= link_to "#{specialty.name}", specialty_url(specialty) %></li>
 		<% id = SpecJoin.find_by_user_id_and_spec_id(@user.id, specialty.id).id %>
 		<%= button_to "Delete Specialty", spec_join_url(id), :data => { :confirm => "Are you sure you want to delete this skill?" }, :method => :delete %>

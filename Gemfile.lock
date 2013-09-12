@@ -73,6 +73,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    flat-ui-rails (0.0.2)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -168,6 +169,7 @@ DEPENDENCIES
   devise
   ejs
   figaro
+  flat-ui-rails
   jquery-rails
   letter_opener
   pg

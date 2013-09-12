@@ -20,7 +20,7 @@
   <input type="password" id="user_password_confirmation" 
 				 name="user[password_confirmation]" size="40"></div>
 
-	<div><label for="user_name">Full Name</label><br>
+	<div><label for="user_name">Name</label><br>
 	<input type="text" id="user_name" size="40" name="user[name]" 
 				 value="<%= resource.name %>"></div>
 
@@ -53,7 +53,8 @@
 
 	<br>
 	<p>** LabElves needs to confirm your email address. Please follow instructions in your confirmation email to activate your account! **</p>
-  <div><input type="submit" name="commit" value="Submit / Send confirmation email"></div>
+  <div><input type="submit" name="commit" value="Submit" 
+				class="btn btn-large btn-block btn-success"></div>
 </form>
 
 <br>

@@ -1,8 +1,8 @@
 <h2 style="color:green">Reviews authored by <%= @user.name %></h2>
 
 <ul>
-	<% @user.reviews_authored.each do |review| %>
-		<li><%= link_to "#{review.task.subject}, #{review.task.time_final.to_date}", review_url(review) %></li><br>
+	<% @user.reviews_authored.order("created_at DESC").each do |review| %>
+		<li><%= link_to "#{review.created_at.to_date}, #{review.task.subject}", review_url(review) %></li><br>
 	<% end %>
 </ul>
 

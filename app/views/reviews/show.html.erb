@@ -1,13 +1,15 @@
 <h2 style="color:green">Review Details</h2>
 
 <ul>
-	<li>Santa: <%= @review.task.santa.name %></li>
-	<li>Elf: <%= @review.task.elf.name %></li>
-	<li>Task Subject: <%= @review.task.subject %></li>
-	<li>Task Date: <%= @review.task.time_final %></li>
-	<li>Review Title: <%= @review.title %></li>
-	<li>Review Comments: <%= @review.comments %></li>
-	<li>Endorsed: <%= @review.endorse %></li>
+	<% if @review.endorse %>
+	<li>&#x2605 Endorsed!</li><br>
+	<% end %>
+	<li>Santa: <%= @review.task.santa.name %></li><br>
+	<li>Elf: <%= @review.task.elf.name %></li><br>
+	<li>Task Subject: <%= @review.task.subject %></li><br>
+	<li>Task Date: <%= @review.task.time_final %></li><br>
+	<li>Review Title: <%= @review.title %></li><br>
+	<li>Review Comments: <%= @review.comments %></li><br>
 </ul>
 
 <%= link_to "Back", :back %>

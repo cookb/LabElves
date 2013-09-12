@@ -1,7 +1,7 @@
 <h3 style="color:green">All Current Bids For This Task</h3>
 
 <ul>
-	<% @task.bids.each do |bid| %>
+	<% @task.bids.order("created_at DESC").each do |bid| %>
 		<li><%= link_to "#{bid.elf.name}, #{bid.time_bid.to_date}, 
 			$#{bid.credits_bid}", bid_url(bid) %></li>	
 		<br>

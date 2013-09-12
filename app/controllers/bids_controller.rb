@@ -5,7 +5,7 @@ class BidsController < ApplicationController
     # nested under tasks
     # only for elf! (also can't be the santa)
     @bid = Bid.new
-    @task = Task.find(params[:task_id])
+    @task = Task.includes(:santa).find(params[:task_id])
     if @task.santa == current_user
       flash[:notice] = "You can't place a bid for your own task!"
       redirect_to task_url(@task)
@@ -33,13 +33,13 @@ class BidsController < ApplicationController
   def index
     # nested under tasks
     # index of a santa's CURRENT bids 
-    @task = Task.find(params[:task_id])
+    @task = Task.includes(:bids).find(params[:task_id])
     render :index
   end
   
   def edit
     # only for elf!
-    @bid = Bid.find(params[:id])
+    @bid = Bid.includes(:task).find(params[:id])
     render :edit
   end
   
@@ -56,13 +56,13 @@ class BidsController < ApplicationController
   
   def all
     # all of an elf's CURRENT bids
-    @bids = current_user.bids
+    @bids = current_user.bids.order("created_at DESC")
     render :all
   end
   
   def show
     # detail view of one bid
-    @bid = Bid.find(params[:id])
+    @bid = Bid.includes(:task, :santa, :elf).find(params[:id])
     render :show
   end
   
@@ -76,7 +76,7 @@ class BidsController < ApplicationController
   
   def book
     # books elf for task. then deletes all bids for the task
-    @bid = Bid.find(params[:id])
+    @bid = Bid.includes(:task).find(params[:id])
     @task = @bid.task
     @task.status = "booked"
     @task.elf_id = @bid.elf_id

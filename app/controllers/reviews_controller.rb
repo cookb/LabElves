@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   
   def new
     # only for santa!
-    @task = Task.find(params[:task_id])
+    @task = Task.includes(:elf).find(params[:task_id])
     @review = Review.new
     render :new
   end
@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
   
   def show
     # detail view of one review
-    @review = Review.find(params[:id])
+    @review = Review.includes(task: [:santa, :elf]).find(params[:id])
     render :show
   end
 end
