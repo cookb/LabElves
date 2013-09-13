@@ -30,6 +30,10 @@ group :development do
   gem "letter_opener"
 end
 
+group :production do
+  gem 'sendgrid'
+end
+
 # Used only for assets and not required in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
