@@ -8,4 +8,4 @@
 	<% end %>
 </ul>
 
-<%= link_to "Back to Task", task_url(@task) %>
+<%= button_to "Back to Task", task_url(@task), :method => :get, :class => "btn btn-large btn-success" %>

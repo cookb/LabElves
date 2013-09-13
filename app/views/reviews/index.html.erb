@@ -1,8 +1,8 @@
-<h2 style="color:green">Reviews for <%= @user.name %></h2>
-
 <% if @user.rating %>
 	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%</h3>
 <% end %>
+
+<h2 style="color:green">Reviews for <%= @user.name %></h2>
 
 <ul>
 	<% @user.reviews_received.order("created_at DESC").each do |review| %>
@@ -15,8 +15,6 @@
 </ul>
 
 <% if @user == current_user %>
-	<%= link_to "Reviews Authored", authored_reviews_url %>
-<% else %>
-	<%= link_to "Back to User Profile", profile_url(@user) %>
+	<%= button_to "Reviews Authored", authored_reviews_url, :method => :get, :class => "btn btn-large btn-success" %>
 <% end %>
 

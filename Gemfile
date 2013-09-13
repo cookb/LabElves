@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'devise'
 gem 'figaro'
+gem 'twitter-bootstrap-rails'
 gem 'flat-ui-rails'
 
 # FOR GOOGLE GEOCODING API

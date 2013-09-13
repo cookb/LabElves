@@ -23,6 +23,7 @@ class ReviewsController < ApplicationController
       task.save
       redirect_to task_url(@review.task)
     else
+      @task = Task.includes(:elf).find(params[:task_id])
       flash.now[:notice] = @review.errors.full_messages
       render :new
     end

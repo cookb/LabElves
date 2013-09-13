@@ -22,14 +22,9 @@
 </ul>
 
 <% unless current_user.specialties.include?(@specialty) %>
-	<h3 style="color:red">Add this specialty to your skills!</h3>
-	<%= button_to "Add Specialty", spec_joins_url(@specialty.id), :method => :create %>
+	<%= button_to "Add This Specialty", spec_joins_url(@specialty.id), :method => :create, :class => "btn btn-large btn-danger" %>
 	<br>
 <% end %>
 
 <h3 style="color:green">Create a new child node for this specialty!</h3>
 <%= render partial: "form", locals: { parent_id: @specialty.id } %>
-<br>
-
-<%= link_to "Back to your specialties", specialties_url %><br>
-<%= link_to "Back", :back %>

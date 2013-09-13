@@ -1,4 +1,4 @@
 <h3 style="color:green">Santa Tasks History: <%= current_user.name %></h3>
 <%= render partial: "list", locals: { tasks: @tasks } %>
 
-<%= button_to "Create a New Task", new_task_url, :method => :get %>
+<%= button_to "Create a New Task", new_task_url, :method => :get, :class => "btn btn-large btn-primary" %>

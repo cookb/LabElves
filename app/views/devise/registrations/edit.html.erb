@@ -58,14 +58,13 @@
   <input type="password" id="user_current_password" name="user[current_password]" size="40"></div>
 
   <div><input type="submit" name="commit" value="Update Profile" 
-				class="btn btn-large btn-block btn-success"></div>
+				class="btn btn-large btn-success"></div>
 </form>
 
 <h3>Delete your LabElves account</h3>
 <%= button_to "Cancel my account", user_registration_url, 
-		:data => { :confirm => "Sorry to see you go! Are you sure?" }, :method => :delete, :class => class="btn btn-large btn-block btn-danger" %>
+		:data => { :confirm => "Sorry to see you go! Are you sure?" }, :method => :delete, :class => "btn btn-large btn-danger" %>
 <br>
-<%= link_to "Back", :back %>
 
 <!-- ORIGINAL DEVISE PAGE (GRABBED HTML INSTEAD) 
 	<%= form_for(resource, :as => resource_name, :url => user_registration_url(resource_name), :html => { :method => :put }) do |f| %>

@@ -1,11 +1,5 @@
 <h1 style="color:green">Hello, <%= @user.name %></h1>
 
-<%= link_to "Santa Tasks", tasks_url %>
-<%= link_to "Elf Tasks", performed_tasks_url %>
-<%= link_to "Bids", all_bids_url %>
-<%= link_to "Specialties", specialties_url %>
-<%= link_to "Reviews", reviews_url %>
-
 <h3 style="color:red">Please be sure to keep your location updated!</h3>
 <h3>Profile information</h3>
 <ul>
@@ -28,5 +22,5 @@
 
 <h3 style="color:green">Elf-Credit balance: $<%= @user.credits %></h3>
 
-<%= button_to "Edit Profile", edit_user_registration_url, :method => :get, :class => "btn btn-large btn-block btn-success" %>
+<%= button_to "Edit Profile", edit_user_registration_url, :method => :get, :class => "btn btn-large btn-success" %>
 <br>

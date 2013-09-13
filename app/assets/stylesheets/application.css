@@ -8,32 +8,54 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
+ *= require bootstrap_and_overrides
  *= require flat-ui
+ *= require_self
  *= require_tree .
  */
 
 body {
 	font-family: helvetica, arial;
+	background-color: #D9FFD9;
+}
+
+li {
+	font-size: 16px;
 }
 
 head {
 	font-family: helvetica, arial;
 }
 
+#sidebar {
+float: left;
+width: 40%;
+background: #ccc;
+min-height: 100%;
+text-align: left;
+}
+
+#main {
+float: right;
+text-align: left;
+width: 60%;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: corbel, arial;
 }
 
+input, label{ 
+	display: inline; 
+}
+
 img {
-	opacity: 0.85;
+	opacity: 0.90;
 	position: absolute;
 	width: 300px;
   height: 600px;
-	top: 50%;
-	left: 50%;
-	margin-top: -300px;
-	margin-left: -150px;
+	top: 100px;
+	left: 50px;
 	z-index: -1;
 }
 

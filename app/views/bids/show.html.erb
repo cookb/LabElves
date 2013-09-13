@@ -13,12 +13,10 @@
 </ul>
 
 <% if @bid.elf == current_user %>
-	<%= button_to "Edit Bid", edit_bid_url(@bid), :method => :get %>
+	<%= button_to "Edit Bid", edit_bid_url(@bid), :method => :get, :class => "btn btn-large btn-warning" %>
 	<%= button_to "Delete Bid", bid_url(@bid), :data => { :confirm => 
-		"Are you sure you want to delete this bid?" }, :method => :delete %>
+		"Are you sure you want to delete this bid?" }, :method => :delete, :class => "btn btn-large btn-danger" %>
 <% elsif @bid.santa == current_user %>		
-	<%= button_to "Book this Elf!", book_bids_url(@bid), :method => :get %>	
+	<%= button_to "Book this Elf!", book_bids_url(@bid), :method => :get, :class => "btn btn-large btn-inverse" %>	
 <% end %>
 <br>
-
-<%= link_to "Back", :back %>
