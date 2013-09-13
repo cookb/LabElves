@@ -2,7 +2,7 @@
 
 <ul>
 	<% @bids.each do |bid| %>
-		<li><%= link_to "#{bid.time_bid.to_date}, #{bid.santa.name},  
+		<li><%= link_to "#{bid.time_bid.to_date}, #{bid.task.subject}, #{bid.santa.name},  
 			$#{bid.credits_bid}", bid_url(bid) %></li>	
 		<br>
 	<% end %>

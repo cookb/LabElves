@@ -3,6 +3,8 @@
 <% status = (task.persisted? ? task.status : "requested") %>
 <% location = (task.persisted? ? task.location : current_user.location) %>
 <% message = (task.persisted? ? "Update Task" : "Create Task") %>
+<% time_start = (task.persisted? ? "#{task.time_start.strftime("%F")}T#{task.time_start.strftime("%R")}" : "") %>
+<% time_end = (task.persisted? ? "#{task.time_end.strftime("%F")}T#{task.time_end.strftime("%R")}" : "") %>
 
 <div class="row">
 	<form accept-charset="UTF-8" action="<%= action %>" class="new_task" id="new_task" method="post">
@@ -24,8 +26,15 @@
 							  <div><label for="task_body">Description</label><br>
 							  <textarea id="task_body" name="task[body]" rows="2" cols="29"><%= task.body %></textarea></div>
 
-							  <div><label for="task_specialty">Required Specialty ID</label><br>
-								<input type="text" id="task_specialty" name="task[spec_id]" value="<%= task.spec_id %>" size="40"></div>
+							  <div><label for="task_specialty">Specialty</label><br>
+								<select id="task_specialty" name="task[spec_id]">
+									<option></option>
+									<% Specialty.order("name ASC").each do |specialty| %>
+										<option value="<%= specialty.id %>" 
+										<%= "selected" if task.spec_id == specialty.id %>><%= specialty.name %></option>
+									<% end %>
+								</select>
+								</div>
 
 							  <div><label for="task_duration">Duration (in minutes)</label><br>
 							  <input type="text" id="task_duration" name="task[duration]" value="<%= task.duration %>" size="40"></div>
@@ -38,10 +47,12 @@
 							  <input type="text" id="task_location" name="task[location]" value="<%= location %>" size="40"></div>
 
 							  <div><label for="task_time_start">Time Window Start</label><br>
-							  <input type="datetime-local" id="task_time_start" name="task[time_start]" value="<%= task.time_start %>" size="40"></div>
+							  <input type="datetime-local" id="task_time_start" name="task[time_start]" 
+									value="<%= time_start %>" size="40"></div>
 
 							  <div><label for="task_time_end">Time Window End</label><br>
-							  <input type="datetime-local" id="task_time_end" name="task[time_end]" value="<%= task.time_end %>" size="40"></div>
+							  <input type="datetime-local" id="task_time_end" name="task[time_end]" 
+									value="<%= time_end %>" size="40"></div>
 
 							  <div><input type="submit" name="commit" value="<%= message %>" class="btn btn-large btn-success"></div>
 								</form>

@@ -32,7 +32,7 @@
 	          <li><%= link_to "Search" %></li>
 					</ul>  
 					<ul class="nav pull-right">
-						<li><%= link_to "Logout", destroy_user_session_url, :method => :delete %></li>
+						<li><%= link_to "Logout #{current_user.email}", destroy_user_session_url, :method => :delete %></li>
 					</ul>
 	      </div>
 	    </div>

@@ -1,5 +1,6 @@
 <h2 style="color:green">Task Details</h2>
 
+<div class="span7">
 <ul>
 	<li>Status: <%= @task.status %></li>
 	<li>Subject: <%= @task.subject %></li>
@@ -20,11 +21,11 @@
 	<li>Duration: <%= @task.duration %> minutes</li>
 	<li>Credits: $<%= @task.credits %></li><br>
 	
-	<li>Earliest date: <%= @task.time_start.localtime %></li>
-	<li>Latest date: <%= @task.time_end.localtime %></li>
+	<li>Earliest date: <%= @task.time_start.strftime("%D %l:%M %p") %></li>
+	<li>Latest date: <%= @task.time_end.strftime("%D %l:%M %p") %></li>
 	<% if @task.time_final %>
 		<% message = (@task.status == "booked" ? "Date booked" : "Date completed") %>
-		<li><%= message %>: <%= @task.time_final.localtime %></li>
+		<li><%= message %>: <%= @task.time_final.strftime("%D %l:%M %p") %></li>
 	<% end %>
 </ul>
 
@@ -46,3 +47,4 @@
 <% if @task.status == "needs_review" && !@task.review %>
 	<%= button_to "Review Elf!", new_task_review_url(@task), :method => :get, :class => "btn btn-large btn-inverse" %>
 <% end %>
+</div>

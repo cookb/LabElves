@@ -1,5 +1,6 @@
 <h2 style="color:green">Bid Details</h2>
 
+<div class="span7">
 <ul>
 	<li>Task Subject: <%= @bid.task.subject %></li>
 	<li>Santa: <%= @bid.santa.name %></li>
@@ -8,9 +9,10 @@
 		@bid.task.latitude, @bid.task.longitude) %> miles</li><br>
 
 	<li>Credit Bid: $<%= @bid.credits_bid %></li>
-	<li>Time Bid: <%= @bid.time_bid %></li><br>
+	<li>Time Bid: <%= @bid.time_bid.strftime("%D %l:%M %p") %></li><br>
 	<li>Comments: <%= @bid.comments %></li>
 </ul>
+
 
 <% if @bid.elf == current_user %>
 	<%= button_to "Edit Bid", edit_bid_url(@bid), :method => :get, :class => "btn btn-large btn-warning" %>
@@ -19,4 +21,4 @@
 <% elsif @bid.santa == current_user %>		
 	<%= button_to "Book this Elf!", book_bids_url(@bid), :method => :get, :class => "btn btn-large btn-inverse" %>	
 <% end %>
-<br>
+</div>

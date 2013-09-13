@@ -1,5 +1,6 @@
 <h2 style="color:green">Specialty Details</h2>
 
+<div class="span7">
 <ul>
 	<li>ID: <%= @specialty.id %></li>
 	<li>Name: <%= @specialty.name %></li>
@@ -8,19 +9,23 @@
 	<li>Creation Date: <%= @specialty.created_at.to_date %></li><br>
 
 	<% if @specialty.parent %>
-		<li>Parent Node:<ul> 
-		<li><%= link_to "#{@specialty.parent.name}", specialty_url(@specialty.parent) %></li></ul><br>	
+		<li>Parent Node:
+		<ul> 
+			<li><%= link_to "#{@specialty.parent.name}", specialty_url(@specialty.parent) %></li>
+		</ul>
+		</li><br>	
 	<% end %>
 
 	<% if @specialty.children.length > 0 %>
-		<li>Child Node(s):<ul>
+		<li>Child Node(s):
+		<ul>
 		<% @specialty.children.each do |child| %>
 			<li><%= link_to "#{child.name}", specialty_url(child) %></li>
 		<% end %>
-		</ul></li>
+		</ul>
+		</li>
 	<% end %>		
 </ul>
-
 <% unless current_user.specialties.include?(@specialty) %>
 	<%= button_to "Add This Specialty", spec_joins_url(@specialty.id), :method => :create, :class => "btn btn-large btn-danger" %>
 	<br>
@@ -28,3 +33,4 @@
 
 <h3 style="color:green">Create a new child node for this specialty!</h3>
 <%= render partial: "form", locals: { parent_id: @specialty.id } %>
+</div>

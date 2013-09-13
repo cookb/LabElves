@@ -21,7 +21,11 @@ class BidsController < ApplicationController
     # nested under tasks
     # only for elf!
     @bid = Bid.new(params[:bid])
-    if @bid.save
+    if !params[:bid][:time_bid].to_datetime.between?(@bid.task.time_start, @bid.task.time_end)
+      flash[:notice] = "Time bid must be within time window!"
+      @task = Task.find(params[:task_id])
+      render :new
+    elsif @bid.save
       redirect_to all_bids_url
     else
       @task = Task.find(params[:task_id])
@@ -46,7 +50,10 @@ class BidsController < ApplicationController
   def update
     # only for elf!
     @bid = Bid.find(params[:id])
-    if @bid.update_attributes(params[:bid])   
+    if !params[:bid][:time_bid].to_datetime.between?(@bid.task.time_start, @bid.task.time_end)
+      flash[:notice] = "Your time bid must be within the time window!"
+      render :edit
+    elsif @bid.update_attributes(params[:bid])   
       redirect_to bid_url(@bid)
     else
       flash.now[:notice] = @bid.errors.full_messages
