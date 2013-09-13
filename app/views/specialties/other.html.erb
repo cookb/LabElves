@@ -2,8 +2,9 @@
 
 <ul>
 	<% @specialties.each do |specialty| %>
-		<li><%= link_to "#{specialty.name}", specialty_url(specialty) %></li>
-		<%= button_to "Add", spec_joins_url(specialty.id), :method => :create, :class => "btn btn-small btn-primary" %>
-		<br>
+		<li>
+		<%= link_to "Add", spec_joins_url(specialty.id), :method => :create, :class => "btn btn-small btn-primary" %>
+		<%= link_to "#{specialty.name}", specialty_url(specialty) %>
+		</li><br>
 	<% end %>
 </ul>

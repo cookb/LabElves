@@ -63,6 +63,7 @@ class TasksController < ApplicationController
   def available
     # index of all tasks with status "requested"
     @tasks = Task.where("status" => "requested").order("created_at DESC")
+    @tasks.reject! { |task| task.user_id == current_user.id }
     render :available
   end
   

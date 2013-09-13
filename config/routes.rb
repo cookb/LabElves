@@ -15,11 +15,13 @@ LabElves::Application.routes.draw do
   
   resources :tasks do
     collection { get 'available'; get 'performed'; get ':id/complete' => "tasks#complete", :as => :complete }
-    resources :bids, :only => [:new, :create, :index]
+    resources :bids, :only => [:new, :create] do
+      collection { get '' => "bids#received" }
+    end
     resources :reviews, :only => [:new, :create]
   end
   
-  resources :bids, :only => [:show, :edit, :update, :destroy] do
+  resources :bids, :only => [:index, :show, :edit, :update, :destroy] do
     collection { get 'all'; get ':id/book' => "bids#book", :as => :book }
   end
   

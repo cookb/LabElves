@@ -30,11 +30,11 @@ class BidsController < ApplicationController
     end    
   end
 
-  def index
+  def received
     # nested under tasks
-    # index of a santa's CURRENT bids 
+    # bids received for one Santa task
     @task = Task.includes(:bids).find(params[:task_id])
-    render :index
+    render :received
   end
   
   def edit
@@ -58,6 +58,12 @@ class BidsController < ApplicationController
     # all of an elf's CURRENT bids
     @bids = current_user.bids.order("created_at DESC")
     render :all
+  end
+  
+  def index
+    # all of Santa's CURRENT bids received
+    @tasks = current_user.santa_tasks.order("created_at DESC")
+    render :index
   end
   
   def show

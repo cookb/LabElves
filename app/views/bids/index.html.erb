@@ -1,11 +1,17 @@
-<h3 style="color:green">All Current Bids For This Task</h3>
+<h3 style="color:green">All Bids Received For <%= current_user.name %></h3>
 
 <ul>
-	<% @task.bids.order("created_at DESC").each do |bid| %>
-		<li><%= link_to "#{bid.elf.name}, #{bid.time_bid.to_date}, 
-			$#{bid.credits_bid}", bid_url(bid) %></li>	
+	<% @tasks.each do |task| %>
+		<% if task.bids.length > 0 %>
+			<li>Task: <%= task.subject %><ul>
+			<% task.bids.each do |bid| %>	
+				<li><%= link_to "#{bid.time_bid.to_date}, #{bid.elf.name},  
+					$#{bid.credits_bid}", bid_url(bid) %></li>
+			<% end %>
+			</li></ul>	
 		<br>
+		<% end %>
 	<% end %>
 </ul>
 
-<%= button_to "Back to Task", task_url(@task), :method => :get, :class => "btn btn-large btn-success" %>
+<%= button_to "View Bids You've Placed", all_bids_url, :method => :get, :class => "btn btn-large btn-inverse" %>

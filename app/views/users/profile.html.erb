@@ -22,6 +22,4 @@
 	<h3 style="color:red">Endorsement Rate: <%= (@user.rating * 100).round(0) %>%, <%= @user.total %> Reviews</h3>
 <% end %>
 
-<%= button_to "See Reviews For This Elf", user_reviews_url(@user), :method => :get, :class => "btn btn-large btn-info" %><br>
-
-<%= link_to "Back", :back %>
+<%= button_to "See Reviews For This Elf", user_reviews_url(@user), :method => :get, :class => "btn btn-large btn-info" %>
