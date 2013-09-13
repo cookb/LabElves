@@ -66,13 +66,15 @@ LabElves::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   # FOR DEVISE
-  config.action_mailer.default_url_options = { :host => 'http://labelves.herokuapp.com/' }
-  ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.sendgrid.net",
-    :port           => "25",
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => ENV['SENDGRID_DOMAIN']
-  }
+  # config.action_mailer.default_url_options = { :host => 'http://labelves.herokuapp.com/' }
+  # ActionMailer::Base.smtp_settings = {
+  #   :address        => "smtp.sendgrid.net",
+  #   :port           => "25",
+  #   :authentication => :plain,
+  #   :user_name      => ENV['SENDGRID_USERNAME'],
+  #   :password       => ENV['SENDGRID_PASSWORD'],
+  #   :domain         => ENV['SENDGRID_DOMAIN']
+  # }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
