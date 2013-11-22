@@ -5,9 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-	<!-- <p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-		 -->
 </head>
 <body>
 
@@ -29,7 +26,6 @@
 	          <li><%= link_to "Bids", bids_url %></li>
 	          <li><%= link_to "Specialties", specialties_url %></li>
 	          <li><%= link_to "Reviews", reviews_url %></li>
-	          <li><%= link_to "Search" %></li>
 					</ul>  
 					<ul class="nav pull-right">
 						<li><%= link_to "Logout #{current_user.email}", destroy_user_session_url, :method => :delete %></li>
