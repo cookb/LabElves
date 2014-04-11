@@ -6,6 +6,7 @@ require 'json'
 GOOGLE_API_KEY = ENV["GOOGLE_API_KEY"]
 
 module ApplicationHelper
+  # converts location (zip, city/state, address) to [latitude, longitude]
   def get_lat_lng(location)
     url = Addressable::URI.new(
       :scheme => "https",
